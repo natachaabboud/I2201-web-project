@@ -1,5 +1,21 @@
+@font-face {
+  font-family: 'Montesori Bold';
+  src: url('Montesori Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Museo Sans 300';
+  src: url('MuseoSans-300.otf');
+}
+
+@font-face {
+  font-family: 'Museo Sans 500';
+  src: url('MuseoSans-500.otf');
+}
+
+
 *{
-    font-family:"Montesori";
+    font-family:"Montesori Bold";
 }
 
 ::selection {
@@ -39,6 +55,7 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    flex-wrap:wrap;
     
 }
 
@@ -80,8 +97,7 @@ body{
 
 
 .homemain{
-    height:70%;
-    max-height:60%;
+    min-height:45vh;
     margin-top:8vh;
     display:flex;
     justify-content: space-around;
@@ -89,19 +105,27 @@ body{
     flex-wrap:wrap;
 }
 
-.introdiv{
-    width:30%;
-    min-width:40vh;
-
+.homemain>div{
+    max-width:45%;
+    min-width:350px;
+    flex-shrink:0;
 }
 
-.imgdiv{
+/*.introdiv{
+    width:30%;
+    min-width:40vh;
+}
+*/
+
+/*.imgdiv{
     width:35%;
     max-width:23vw;
+    min-width:200px;
 
     display:flex;
     justify-content: flex-end;
-}
+
+}*/
 
 
 
@@ -115,7 +139,7 @@ body{
 
 #startbutton{
     all:unset;
-    transition:all 0.5s ease;
+    transition:all 0.4s ease;
     font-size:90%;
     text-align: center;
     background-color:rgb(73, 0, 115);
@@ -129,10 +153,10 @@ body{
 
 #startbutton:hover{
     cursor: pointer;
-    transition:all 0.5s ease;
-    background-color: rgb(208, 137, 255);
+    transition:all 0.3s ease;
+    background-color: rgb(182, 64, 255);
     box-shadow: none;
-    border:1px solid rgb(230, 155, 255);
+    border:1px solid rgb(208, 132, 255);
 }
 
 .orangetext{
@@ -147,7 +171,7 @@ body{
 }
 
 .home img{
-    width:140%;
+    max-width:30vw;
 }
 
 .homebottom{
