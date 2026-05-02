@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial=scale=1.0">
+        <title>Quiz</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="quiz-page-style.css">
+       
+
+    </head>
+    <body>
+        <div id="confetti-container" style="position:fixed; top:0; left:0; width:100vw; height:100vh; pointer-events:none; z-index:9999;"></div>
+
+        <div class="menu-container">
+            <div id="menuButton" class="menu-btn">
+                <span class="menu-icon">☰</span>
+            </div>
+
+            <div class="menu-item" onclick="goToHome()">Home</div>
+            <div class="menu-item"  onclick="goToStudyTips()"> Study Tips</div>
+            <div class="menu-item" onclick="goToAboutUs()"> About Us</div>
+        </div>        
+
+        <div class="animated-bg" aria-hidden="true">
+            <div class="gradient-layer"></div>
+
+            <!-- bubbles (content foreground) -->
+            <div class="bubbles-layer">
+                <div class="bubble b1"></div>
+                <div class="bubble b2"></div>
+                <div class="bubble b3"></div>
+                <div class="bubble b4"></div>
+                <div class="bubble b5"></div>
+            </div>
+        </div>
+        <div class="questionmarks-layer"></div>
+
+        <div class="quiz-languages">
+            <header class="quiz-header">
+                <h2 class="quiz-title">Choose a coding language:</h2>
+            </header>
+            <div class="quiz-content">
+                <ul class="languages-options">
+                    <li class="language-option" id="HTML">HTML</li>
+                    <li class="language-option" id="CSS">CSS</li>   
+                    <li class="language-option" id="JavaScript">JavaScript</li>
+                    <li class="language-option" id="MixedLanguage">Mixed</li>
+                </ul>
+            </div>
+        
+        
+            <div class="quiz-footer">
+                <button class="next-difficulty-btn" >
+                    Next <img src="arrowforward.png" width="30px">
+                </button>
+            </div>
+        </div>
+   
+        <div class="quiz-difficulties">
+            <header class="quiz-header">
+                <h2 class="quiz-title">Choose the quiz's difficulty:</h2>
+            </header>
+            <div class="quiz-content">
+                <ul class="difficulty-options">
+                    <li class="difficulty-option" id="Easy">Easy</li>
+                    <li class="difficulty-option" id="Medium">Medium</li>   
+                    <li class="difficulty-option" id="Hard">Hard</li>
+                </ul>
+        </div>
+        
+        
+        <div class="quiz-footer">
+            <button class="start-quiz-btn">
+                Start Quiz <img src="arrowforward.png" width="30px">
+            </button>
+        </div>
+    </div>
+
+    <div class="quiz-container">
+            <header class="quiz-header">
+                <h2 class="quiz-title">Front-End Quiz</h2>
+                <div class="quiz-timer" id="quizTimer">
+                    <img src="timer.png" width="20px">
+                    <p class="time-duration" id="questionTimer">--</p>
+                </div>
+            </header>
+            <div class="quiz-content">
+                <h1 class="question-text" id="questionContent">What is 2 + 2?</h1>
+                <ul class="answer-options" id="answerOptions">
+                    <li class="answer-option">3</li>
+                    <li class="answer-option correct">4
+                        <span class="material-symbols-rounded">check_circle</span>  
+                    </li>   
+                    <li class="answer-option">5
+                    </li>
+                    <li class="answer-option incorrect">22
+                        <span class="material-symbols-rounded">cancel</span>  
+                    </li>
+                </ul>
+            </div>
+            
+            
+            <div class="quiz-footer">
+                <p class="question-status" id="questionStatus"><b>1</b> of <b>10</b> Questions</p>
+                <button class="next-question-btn" id="nextQuestionButton">
+                    Next <img src="arrowforward.png" width="30px">
+            </button>
+            </div>
+    </div>
+
+    <div class="result-container" id="resultContainer">
+        <img src="party.png" class="result-img">
+        <h2 class="result-title"> Quiz completed! </h2>
+        <p class="result-message" id="resultMessage"> You answered <b> <span id="answeredResult"> -- </span> </b> out of <b> <span id="totalResult"> -- </span></b> questions correctly. Great effort! </p>
+        <button class="result-button" onclick="repeatQuiz()"> Repeat Quiz </button> <br>
+        <button class="result-button" id="repeatQuizWrongButton" onclick="repeatQuizWrong()" > Repeat Quiz with Wrong Answers </button> <span id="afterButtonBreak"><br></span>
+        <button class="result-button" onclick="displayQuizStatistics()"> Quiz Statistics </button> <br>
+        <button class="result-button" onclick="backToMenu()"> Back to Menu </button>
+        
+    </div>
+    <!-- Animated background for quiz page -->
+    <div class="animated-bg">
+        <div class="gradient-layer"></div>
+        <div class="shapes-layer">
+            <div class="shape s1"></div>
+            <div class="shape s2"></div>
+            <div class="shape s3"></div>
+            <div class="shape s4"></div>
+    </div>
+    <div class="bubbles-layer">
+        <div class="bubble b1"></div>
+        <div class="bubble b2"></div>
+        <div class="bubble b3"></div>
+        <div class="bubble b4"></div>
+        <div class="bubble b5"></div>
+    </div>
+    <div class="questionmarks-layer"></div>
+    </div>
+
+    <div class="quiz-stats-container" id="quizStatsContainer">
+        <table class="quiz-stats-table" id="quizStatsTable">
+
+            <thead>
+                <th>Question</th>
+                <th>Topic</th>
+                <th> Language </th>
+                <th>Status</th>
+                <th>Your answer</th>
+                <th>Correct answer</th>
+                <th>Time taken</th>
+            </thead>
+            <tr>
+                <td> How do you add an image in HTML? </td>
+                <td> Tags </td>
+                <td> HTML </td>
+                <td> <img src="tick.png" width="20px"> </td>
+                <td class="quiz-stats-correct"> &ltimg> </td>
+                <td class="quiz-stats-correct"> &ltimg> </td>
+                <td> 6s</td>
+            </tr>
+            <tr>
+                <td> How do you add a link in HTML? </td>
+                <td> Tags </td>
+                <td> HTML </td>
+                <td> <img src="crossmark.png" width=20px> </td>
+                <td class="quiz-stats-incorrect"> &ltlink> </td>
+                <td class="quiz-stats-correct"> &lta> </td>
+                <td> 9s</td>
+            </tr>
+            <tr>
+                <td> How do you add a comment in JavaScript? </td>
+                <td> Tags </td>
+                <td> HTML </td>
+                <td> <img src="crossmark.png" width=20px> </td>
+                <td class="quiz-stats-incorrect"> &ltlink> </td>
+                <td class="quiz-stats-correct"> &lta> </td>
+                <td> 2s</td>
+            </tr>
+            <tr>
+                <td> How do you add a comment in JavaScript? </td>
+                <td> Tags </td>
+                <td> HTML </td>
+                <td class="quiz-stats-time-up"> TIME UP </td>
+                <td> -- </td>
+                <td class="quiz-stats-correct"> &lta> </td>
+                <td> -- </td>
+            </tr>
+        </table>
+    
+        <table class="quiz-stats-review" id="quizStatsReview">
+            <tr> 
+                <td> Correct Answers: </td>
+                <td> 4 </td>
+            </tr>
+            <tr> 
+                <td> Wrong Answers: </td>
+                <td> 3 </td>
+            </tr>
+            <tr>
+                <td> Time Up:</td>
+                <td> 0 </td>
+            </tr>
+            <tr>
+                <td>Score: </td>
+                <td>84%</td>
+            </tr>
+            <tr>
+                <td>Comments: </td>
+                <td>Fair performance</td>
+            </tr>
+            <tr>
+                <td>Languages To Work On:</td>
+                <td>HTML, CSS</td>
+            </tr>
+            <tr>
+                <td>Topics To Work On:</td>
+                <td>Tags, Definitions</td>
+            </tr>
+        </table>
+        <button class="back-btn" onclick="quizStatsBack()">
+            
+            <span class="back-btn-content">
+                <img src="arrowback.png"> back  
+            </span>
+
+        </button>
+    </div>
+
+
+    <script src="quiz-question-bank.js"></script>
+    <script src="quiz-page-script.js"></script>
+    <script src="confetti_libray.js"></script>
+
+
+    </body>
+</html>

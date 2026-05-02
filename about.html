@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>About Us</title>
+        <style>
+
+            ::selection{
+                background: rgba(239, 64, 255, 0.515);
+                color:white;
+            }
+
+            @font-face {
+                font-family: JetBrains;
+                src: url("JetBrainsMono-Regular.ttf");
+            }
+
+           @font-face {
+                font-family: Lex;
+                src: url("Lex.ttf");
+            }
+
+            *{
+                font-family: JetBrains;
+            }
+
+            
+
+            body{
+                color:rgb(79, 0, 125);
+                min-height:97.8vh;
+                display:flex;
+                background: linear-gradient(45deg,rgb(255, 33, 255),rgb(162, 0, 255), rgb(215, 188, 255));
+                justify-content: center;
+                align-items: center;
+            }
+
+            h1, h3{
+                font-family:Lex;
+            }
+
+            h1{
+                font-size:2.5em;
+            }
+
+            h3{
+                font-size:1.5em;
+            }
+
+            p{
+                font-size:1.2em;
+            }
+
+            .pagecontainer{
+                animation:appear 1s ease;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                padding:5px;
+                width:90vw;
+                min-height:600px;
+                background: rgba(255, 255, 255, 0.544);
+                border-radius: 15px;
+                z-index:5;
+            }
+
+            .about-us{
+                width:90%;
+                display:flex;
+                justify-content: space-evenly;
+                flex-wrap:wrap;
+            }
+
+            .about-us-text{
+                width:45%;
+                min-width:500px;
+                margin: 0px 20px;
+            }
+
+            .about-us-text:hover{
+                cursor:default;
+                animation:pop 1s ease;
+            }
+
+            .about-image{
+                align-self:center;
+                align-items: center;
+                justify-content: center;
+                width:50%;
+                display:flex;
+
+            }
+
+            .about-image img{
+                min-width:400px;
+                max-width:90%;
+                height:auto;
+                border-radius: 15px;
+            }
+
+            .about-image img:hover{
+                animation: pop 1s ease;
+            }
+
+
+
+            @keyframes pop{
+                0%{
+                    transform:scale(1);
+                }
+                25%{
+                    transform:scale(1.2);
+                }
+                100%{
+                    transform:scale(1);
+                }
+            }
+            
+            @keyframes appear{
+                0%{
+                    transform:scale(0.2);
+                    opacity:0.3;
+                }
+                25%{
+                    opacity: 0.3;
+                }
+                100%{
+                    transform:scale(1);
+                    opacity:1;
+                }
+            }
+
+            @keyframes shrink{
+                25%{
+                transform:scale(1.3);
+                opacity:1;
+                }
+                100%{
+                transform: scale(0);
+                opacity:0;
+                }
+            }
+
+            
+            .animated-bg {
+            position: fixed;          /* full page */
+            inset: 0;
+            z-index: 0;               /* behind UI; ensure your .bodycontent and menu have higher z-index */
+            overflow: hidden;
+            pointer-events: none;
+            }
+
+
+
+            /* Gradient - slow moving */
+            .gradient-layer {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, #b358ca 0%, #e91ec4 30%, #3f51b5 60%, #b358ca 100%);
+            background-size: 300% 300%;
+            filter: saturate(1.05) contrast(1.02) blur(14px) opacity(0.85);
+            animation: gradientShift 18s linear infinite;
+            transform: translateZ(0);
+            will-change: transform, background-position;
+            }
+
+            /* Bubbles rising inside content area (subtle) */
+            .bubbles-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            }
+
+            .bubble {
+            position: absolute;
+            bottom: -40px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 6px 24px rgba(100, 60, 140, 0.12) inset;
+            filter: blur(0.4px);
+            opacity: 0.9;
+            animation: rise 9s linear infinite;
+            will-change: transform, opacity;
+            }
+
+            /* different sizes/positions/delays for variety */
+            .bubble.b1 { left: 12%; width: 16px; height: 16px; animation-duration: 8s; animation-delay: 0s; }
+            .bubble.b2 { left: 30%; width: 22px; height: 22px; animation-duration: 11s; animation-delay: 2s; }
+            .bubble.b3 { left: 50%; width: 12px; height: 12px; animation-duration: 7s; animation-delay: 1.2s; }
+            .bubble.b4 { left: 72%; width: 26px; height: 26px; animation-duration: 13s; animation-delay: 3s; }
+            .bubble.b5 { left: 86%; width: 14px; height: 14px; animation-duration: 10s; animation-delay: 0.6s; }
+
+            /* gentle parallax transform will be applied by JS using data-speed classes (optional) */
+            [data-parallax="slow"] { transform: translateZ(0); }
+            [data-parallax="med"]  { transform: translateZ(0); }
+            [data-parallax="fast"] { transform: translateZ(0); }
+
+            /* ---------------- Keyframes ---------------- */
+
+            @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+            }
+
+            @keyframes floatX {
+            0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+            100% { transform: translateX(18px) translateY(-8px) rotate(2deg); }
+            }
+
+            @keyframes floatY {
+            0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+            100% { transform: translateX(-12px) translateY(18px) rotate(-2deg); }
+            }
+
+            @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+            }
+
+            @keyframes rise {
+            0% { transform: translateY(0) scale(0.9); opacity: 0; }
+            10% { opacity: 0.7; }
+            80% { opacity: 0.45; }
+            100% { transform: translateY(-130vh) scale(1.1); opacity: 0; }
+            }
+
+
+
+            /* small responsiveness/tune */
+            @media (max-width: 720px) {
+            .shape.s1, .shape.s3 { display:none; } /* hide big shapes on small screens for clarity */
+            .menu-btn { right: 18px; top: 18px; }
+            }
+            .questionmarks-layer {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1; /* behind content */
+            }
+
+            .question-mark {
+            position: absolute;
+            color: rgba(200,160,255,0.7);
+            font-size: 30px;
+            opacity: 0;
+            animation: floatUp 8s linear infinite;
+            text-shadow: 0 0 15px rgba(150,100,255,0.7);
+            filter: blur(6px);
+            }
+
+            @keyframes rise {
+            0% {
+                transform: translateY(20px) translateX(0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+                transform: translateY(-100vh) translateX(20px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-120vh) translateX(40px);
+            }
+            }
+            @keyframes floatUp {
+            0% {
+                transform: translateY(20px) scale(0.9);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            80% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) scale(1.1);
+                opacity: 0;
+            }
+            }
+
+            
+        
+        .menu-container {
+            animation:fadein 2s ease;
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            z-index: 1000;
+        }
+
+        .menu-btn {
+            width: 60px;
+            height: 60px;
+            background: #9032d8;
+            color: white ;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease;
+            z-index:1000
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-icon {
+            font-size: 28px;
+        }
+
+        /* MENU ITEMS */
+        .menu-item {
+            z-index:1000;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            background: hsl(263, 100%, 72%);
+            padding: 12px 20px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(0, 0) scale(0.8);
+            transition: 0.35s ease;
+
+        }
+
+
+        /* ACTIVE STATES — DIAGONAL SLIDE */
+        .menu-item:nth-child(2).active {  /* Home */
+            transform: translate(-110px, 10px) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .menu-item:nth-child(3).active { /* Study Tips */
+            transform: translate(-140px, 70px) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .menu-item:nth-child(4).active { /* About Us */
+            transform: translate(-110px, 130px) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @keyframes fadein{
+        0%{
+            opacity:0
+        }
+        50%{
+                opacity:0;
+            }
+        100%{
+            opacity:1;
+        }
+        }
+
+        @keyframes fadeout{
+            0%{opacity:1}
+            100%{opacity:0}
+        }
+
+
+            
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="animated-bg" aria-hidden="true">
+            <div class="gradient-layer"></div>
+
+            <!-- bubbles (content foreground) -->
+            <div class="bubbles-layer">
+                <div class="bubble b1"></div>
+                <div class="bubble b2"></div>
+                <div class="bubble b3"></div>
+                <div class="bubble b4"></div>
+                <div class="bubble b5"></div>
+            </div>
+        </div>
+        <div class="questionmarks-layer"></div>
+
+
+        <div class="pagecontainer">
+            <div class="about-us">
+                <div class="about-us-text">
+                    <h1> About Us</h1>
+                    <h3> Who are we?</h3>
+                    <p> We’re Amani, Nour, and Natacha: three second-year Computer Science students who created this quiz platform as a simple way to test and improve our HTML, CSS, and JavaScript skills. What started as a tool for our own practice turned into something we wanted to share with anyone learning web development. The quizzes are designed to help you check what you know, spot weak points, and figure out which topics you should review or practice more; whether it’s styling, layout, or JavaScript fundamentals like the DOM and events. Our goal is to make learning more interactive, clear, and motivating, one question at a time. </p>
+                </div>
+                <div class="about-image">
+                    <img src="trio.jpg">
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-container">
+            <div id="menuButton" class="menu-btn">
+                <span class="menu-icon">☰</span>
+            </div>
+
+            <div class="menu-item" onclick="goToHome()">Home</div>
+            <div class="menu-item"  onclick="goToStudyTips()"> Study Tips</div>
+            <div class="menu-item" class="active-menu-item""> About Us</div>
+        </div>
+
+        
+
+        <script type="text/javascript">
+
+
+            document.addEventListener('DOMContentLoaded', () => {
+
+            const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) return; 
+
+            const bubbles = Array.from(document.querySelectorAll('.bubbles-layer .bubble'));
+            const gradient = document.querySelector('.gradient-layer');
+
+            // This check is important for the parallax script to run only if elements exist
+            if (!bubbles.length && !gradient) return;
+
+            // Keep track of mouse position (-1..1)
+            let mouseX = 0, mouseY = 0;
+            // Keep track of scroll progress (0..1)
+            let scrollP = 0;
+
+            const bubbleSpeeds = bubbles.map((_, i) => (i % 2 === 0) ? 6 : 4);
+
+            // Clamp function
+            function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+            // Update mouseX/mouseY normalized to -1..1
+            document.addEventListener('mousemove', (e) => {
+                const cx = window.innerWidth / 2;
+                const cy = window.innerHeight / 2;
+                mouseX = clamp((e.clientX - cx) / cx, -1, 1);
+                mouseY = clamp((e.clientY - cy) / cy, -1, 1);
+            }, { passive: true });
+
+            // Update scroll progress
+            function updateScroll() {
+                const s = window.scrollY || window.pageYOffset || 0;
+                // progress relative to 2x viewport height so effect is subtle
+                scrollP = clamp(s / (window.innerHeight * 2), 0, 1);
+            }
+            window.addEventListener('scroll', () => updateScroll(), { passive: true });
+            updateScroll();
+
+            // Animation loop
+            let rafId = null;
+            function tick() {
+                // Gradient subtle vertical translation from scroll
+                if (gradient) {
+                    const gY = -10 * scrollP; // up to -10px
+                    gradient.style.transform = `translateY(${gY}px)`;
+                }
+
+                // Shapes - move based on mouse + slight scroll offset
+                shapes.forEach((el, i) => {
+                    const speed = shapeSpeeds[i] || 4;
+                    const mx = mouseX * speed; // px
+                    const my = mouseY * speed; // px
+                    const sy = - (i + 1) * scrollP * 6; // small extra vertical offset by index
+                    // we use translate3d for hardware acceleration
+                    el.style.transform = `translate3d(${mx}px, ${my + sy}px, 0)`;
+                });
+
+                // Bubbles - lighter movement
+                bubbles.forEach((el, i) => {
+                    const bs = bubbleSpeeds[i] || 4;
+                    const mx = mouseX * bs * 0.3;
+                    const my = -mouseY * bs * 0.3;
+                    // give subtle upward offset with scroll so bubbles drift earlier
+                    const sy = -scrollP * 20 * ((i % 2) ? 0.6 : 1);
+                    el.style.transform = `translate3d(${mx}px, ${my + sy}px, 0)`;
+                });
+
+                rafId = requestAnimationFrame(tick);
+            }
+
+            // Start loop
+            if (!rafId) {
+                rafId = requestAnimationFrame(tick);
+            }
+
+            // Clean up on page unload (good practice)
+            window.addEventListener('beforeunload', () => {
+                if (rafId) cancelAnimationFrame(rafId);
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!menuBtn.contains(e.target) && !e.target.classList.contains("menu-item")) {
+                if (menuOpen) {
+                    menuOpen=!menuOpen;
+                    menuItems.forEach(item => item.classList.toggle("active"));
+                }
+            }
+        });
+
+        // ----------------- Question Mark Generator -----------------
+        document.addEventListener("DOMContentLoaded", () => {
+            const layer = document.querySelector(".questionmarks-layer");
+            if (!layer) {
+                console.error("questionmarks-layer not found");
+                return;
+            }
+            const total = 15;
+
+            for (let i = 0; i < 15; i++) { // number of question marks
+            
+            const q = document.createElement("div");
+                q.classList.add("question-mark");
+                q.textContent = "?";
+
+                // random size between 20–50px
+                const size = Math.floor(Math.random() * 30) + 20;
+                q.style.fontSize = size + "px";
+                const blur = Math.random() * 4 + 1; // blur: 1px–5px
+                q.style.filter = `blur(${blur}px)`;
+
+                // random X position
+                q.style.left = Math.random() * 100 + "%";
+
+                // random animation duration
+                q.style.animationDuration = (6 + Math.random() * 5) + "s";
+
+                // random delay
+                q.style.animationDelay = Math.random() * 5 + "s";
+
+                // start below the screen
+                q.style.bottom = "-60px";
+                
+
+
+                layer.appendChild(q);
+            }
+        });
+
+        let menuOpen=false;
+
+        const menuBtn = document.getElementById("menuButton");
+        const menuItems = document.querySelectorAll(".menu-item");
+
+        menuBtn.addEventListener("click", () => {
+            menuOpen = !menuOpen;
+            menuItems.forEach(item => item.classList.toggle("active"));
+        });
+
+        let pagecontainer=document.querySelector(".pagecontainer");
+
+        function goToHome(){
+
+            menuBtn.style.animation="fadeout 1s ease";
+            for(let item of menuItems) item.style.animation="fadeout 1s ease";
+
+            pagecontainer.style.animation="shrink 0.9s ease";
+            
+            setTimeout(() => {location.href = "homepage.html";}, 850);  
+        }
+
+        function goToStudyTips(){
+
+            menuBtn.style.animation="fadeout 1s ease";
+            for(let item of menuItems) item.style.animation="fadeout 1s ease";
+
+            pagecontainer.style.animation="shrink 0.9s ease";
+            
+            setTimeout(() => {location.href = "studytips.html";}, 850);  
+        }
+        </script>
+
+
+    </body>
+
+</html>

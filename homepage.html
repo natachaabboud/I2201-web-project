@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Page</title>
+<link rel="stylesheet" href="homepage-style.css">
+</head>
+
+<body>
+
+<!-- Floating Menu Button -->
+<div class="menu-container">
+    <div id="menuButton" class="menu-btn">
+        <span class="menu-icon">☰</span>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="menu-item" class="active-menu-item">Home</div>
+    <div class="menu-item" onclick="goToStudyTips()">Study Tips</div>
+    <div class="menu-item" onclick="goToAboutUs()">About Us</div>
+</div>
+
+<div class="bodycontent">    
+    <div class="home">
+        <div class="homemain">
+            <div class="introdiv">
+                <h1> Test Your Knowledge Of <span class="orangetext"> Front-End </span> Web Development</h1>
+                <p> Are you as knowledgeable about HTML, CSS and JavaScript as you think you are? Let's find out now! Click the button below to start the quiz.</p>
+                <button id="startbutton" onclick="startquiz()"> Start Quiz</button>
+            </div>
+            <div class="imgdiv">
+                <img src="csnerd.png" align="center">
+            </div>
+        </div>
+
+                <div class="homebottom">
+                    <div>
+                        <h4>Make learning more fun </h4>
+                        <p> Instead of using boring, traditional study methods, try our quiz for a more engaging learning experience!</p>
+                    </div>
+                    <div>
+                        <h4>Customizable </h4>
+                        <p> Choose which coding language you would like to be tested on as well as the difficulty of your quiz.</p>
+                    </div>
+                    <div>
+                        <h4>Discover your weaknesses </h4>
+                        <p> Based on your incorrect answers and response times, find out which questions are the most difficult for you. </p>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <!-- ANIMATED BACKGROUND LAYERS -->
+        <div class="animated-bg" aria-hidden="true">
+            <div class="gradient-layer"></div>
+
+            <!-- floating shapes layer -->
+            <div class="shapes-layer">
+                <div class="shape s1"></div>
+                <div class="shape s2"></div>
+                <div class="shape s3"></div>
+                <div class="shape s4"></div>
+            </div>
+
+            <!-- bubbles (content foreground) -->
+            <div class="bubbles-layer">
+                <div class="bubble b1"></div>
+                <div class="bubble b2"></div>
+                <div class="bubble b3"></div>
+                <div class="bubble b4"></div>
+                <div class="bubble b5"></div>
+            </div>
+        </div>
+        <div class="questionmarks-layer"></div>
+
+       
+
+
+        <script src="homepage-script.js"></script>
+</body>
+</html>

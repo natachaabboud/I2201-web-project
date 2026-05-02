@@ -1,0 +1,573 @@
+@font-face {
+  font-family: 'Montesori Bold';
+  src: url('Montesori Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Museo Sans 300';
+  src: url('MuseoSans-300.otf');
+}
+
+@font-face {
+  font-family: 'Museo Sans 500';
+  src: url('MuseoSans-500.otf');
+}
+
+@font-face {
+  font-family: 'JetBrains';
+  src: url('JetBrainsMono-Regular.ttf');
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(136, 88, 202, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(136, 88, 202, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(136, 88, 202, 0); }
+}
+@keyframes glowing {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+*{
+    font-family:"Montesori Bold";
+}
+
+::selection {
+  background-color: rgba(115, 0, 90, 0.907);
+  color: #FFFFFF;
+}
+body {
+    cursor:default;
+    margin: 0;
+    background: #f3eefc;
+    font-family: Arial;
+    min-height:100vh;
+    background-image: linear-gradient(rgb(179, 88, 202));
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    cursor:default;
+}
+
+.bodycontent{
+    animation: appear 1s ease;
+    padding:6px;
+    margin-top:1vh;
+    min-height:94vh;
+    width:90%;
+    background-color:rgba(255, 255, 255, 0.464);
+    border-radius:9px;
+}
+
+/* MENU BUTTON */
+.menu-container {
+    animation: fadein 1s ease;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.menu-btn {
+
+    width: 60px;
+    height: 60px;
+    background: #9b1def;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+
+.menu-icon {
+    font-size: 28px;
+}
+
+/* MENU ITEMS */
+.menu-item {
+    font-family:JetBrains;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    background: hsl(263, 100%, 72%);
+    padding: 12px 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(0, 0) scale(0.8);
+    transition: 0.35s ease;
+
+}
+
+
+/* ACTIVE STATES — DIAGONAL SLIDE */
+.menu-item:nth-child(2).active {  /* Home */
+    transform: translate(-110px, 10px) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-item:nth-child(3).active { /* Study Tips */
+    transform: translate(-140px, 70px) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-item:nth-child(4).active { /* About Us */
+    transform: translate(-110px, 130px) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+
+
+.home{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.homemain{
+    min-height:45vh;
+    margin-top:3vh;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
+.homemain>div{
+    max-width:45%;
+    min-width:350px;
+    flex-shrink:0;
+}
+.orangetext{
+    font-family:inherit;
+    color:rgba(136, 88, 202);
+}
+
+.homemain p{
+    font-size:18px;
+    color:rgba(0,0,0,0.7);
+    font-family:'Museo Sans 300';
+}
+
+.home img{
+
+    max-width:30vw;
+    
+}
+
+
+.homebottom{
+    margin-top:10vh;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width:90%;
+    min-height: 10vh;
+}
+.homemain h1{
+    font-family: 'Museo Sans 500';
+    font-size:40px;
+}
+.homemain div h1{
+    font-family: 'Museo Sans 500';
+    line-height:1.2;
+    font-size:40px;
+    margin-bottom:0;
+}
+#startbutton{
+    all:unset;
+    font-family:'Montesori Bold';
+    transition:all 0.4s ease;
+    font-size:90%;
+    text-align: center;
+    background-color:rgba(169, 77, 255, 0.8);
+    border:1px solid rgb(157, 68, 226);
+    box-shadow: 0px 0px 6px 0.4px rgba(87, 2, 108, 0.166);
+    color:white;
+    padding:6px;
+    width:25%;
+    border-radius:8px;
+}
+
+#startbutton:hover{
+    cursor: pointer;
+    transition:all 0.3s ease;
+    background-color: rgb(255, 64, 239);
+    box-shadow: none;
+    border:1px solid rgb(208, 132, 255);
+}
+
+.home img{
+
+    max-width:30vw;
+    
+}
+.homebottom{
+    margin-top:10vh;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width:90%;
+    min-height: 10vh;
+
+}
+
+
+
+/*.imgdiv{
+    width:35%;
+    max-width:23vw;
+    min-width:200px;
+
+    display:flex;
+    justify-content: flex-end;
+
+}*/
+
+.homebottom>div{
+    min-height:90%;
+    padding:20px;
+    width:30%;
+    min-width:250px;
+    background-color: rgba(255, 255, 255, 0.54);
+    border-radius:10px;
+    
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+   
+
+
+    
+  
+}
+
+
+.homebottom>div:nth-child(1) { animation-delay: 0; }
+.homebottom>div:nth-child(2) { animation-delay: -5s; }
+.homebottom>div:nth-child(3) { animation-delay: -10s; }
+.homebottom>div:hover{
+    /* 3D lift/tilt on hover */
+        color:white;
+    transform: perspective(1000px) rotateX(2deg) translateY(-5px); 
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.25); /* Stronger shadow on lift */
+}
+.homebottom>div:hover{
+    color:white;
+    /* Pause the animation */
+    animation-play-state: paused; 
+    
+    /* Slightly lift the box on hover */
+    transform: perspective(1000px) rotateY(0deg) translateY(-8px) scale(1.02); 
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.25); 
+}
+
+.homebottom>div::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #b358ca, #e91ec4, #3f51b5, #b358ca); /* Purple/Pink/Blue Gradient */
+    background-size: 400%;
+    z-index: -1;
+    border-radius: 12px;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.4s ease;
+}
+
+.homebottom>div:hover::before {
+    color:white;
+    opacity: 1;
+    animation: glowing 5s linear infinite; /* Start the glowing animation */
+}
+.homebottom p{
+    font-size:92%;
+    color:black;
+    font-family:'Museo Sans 300';
+}
+
+.homebottom h4{
+        font-family: 'Museo Sans 500';
+}
+.homebottom>div:hover h4{
+    color: rgb(0, 0, 0); /* Change header color to a bright pink */
+    text-shadow: 0 0 5px rgba(233, 30, 216, 0.8); /* Add a subtle color shadow */
+    transition: color 0.4s, text-shadow 0.4s;
+}
+
+
+
+
+/* ---------------- Animated Live Background ---------------- */
+
+.animated-bg {
+  position: fixed;          /* full page */
+  inset: 0;
+  z-index: 0;               /* behind UI; ensure your .bodycontent and menu have higher z-index */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+
+/* Gradient - slow moving */
+.gradient-layer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #b358ca 0%, #e91ec4 30%, #3f51b5 60%, #b358ca 100%);
+  background-size: 300% 300%;
+  filter: saturate(1.05) contrast(1.02) blur(14px) opacity(0.85);
+  animation: gradientShift 18s linear infinite;
+  transform: translateZ(0);
+  will-change: transform, background-position;
+}
+
+/* Floating shapes */
+.shapes-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 16px;
+  opacity: 0.12;
+  filter: blur(4px);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* individual shapes sizes + positions */
+.shape.s1 {
+  width: 220px; height: 120px;
+  left: 8%;
+  top: 12%;
+  background: linear-gradient(135deg,#8a2be2 0%, #c47bff 100%);
+  animation: floatX 10s ease-in-out infinite alternate, rotateSlow 30s linear infinite;
+}
+.shape.s2 {
+  width: 160px; height: 160px;
+  right: 6%;
+  top: 18%;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#ff9ad6 0%, #7c4dff 100%);
+  animation: floatY 12s ease-in-out infinite alternate, rotateSlow 24s linear infinite;
+}
+.shape.s3 {
+  width: 300px; height: 80px;
+  left: 12%;
+  bottom: 8%;
+  background: linear-gradient(135deg,#b3a0ff 0%, #e091ff 100%);
+  animation: floatX 14s ease-in-out infinite alternate;
+  border-radius: 40px;
+}
+.shape.s4 {
+  width: 120px; height: 120px;
+  right: 20%;
+  bottom: 18%;
+  background: linear-gradient(135deg,#6f4bff 0%, #e36cff 100%);
+  opacity: 0.10;
+  animation: floatY 9s ease-in-out infinite alternate, rotateSlow 28s linear infinite;
+}
+
+/* Bubbles rising inside content area (subtle) */
+.bubbles-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -40px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 6px 24px rgba(100, 60, 140, 0.12) inset;
+  filter: blur(0.4px);
+  opacity: 0.9;
+  animation: rise 9s linear infinite;
+  will-change: transform, opacity;
+}
+
+/* different sizes/positions/delays for variety */
+.bubble.b1 { left: 12%; width: 16px; height: 16px; animation-duration: 8s; animation-delay: 0s; }
+.bubble.b2 { left: 30%; width: 22px; height: 22px; animation-duration: 11s; animation-delay: 2s; }
+.bubble.b3 { left: 50%; width: 12px; height: 12px; animation-duration: 7s; animation-delay: 1.2s; }
+.bubble.b4 { left: 72%; width: 26px; height: 26px; animation-duration: 13s; animation-delay: 3s; }
+.bubble.b5 { left: 86%; width: 14px; height: 14px; animation-duration: 10s; animation-delay: 0.6s; }
+
+/* gentle parallax transform will be applied by JS using data-speed classes (optional) */
+[data-parallax="slow"] { transform: translateZ(0); }
+[data-parallax="med"]  { transform: translateZ(0); }
+[data-parallax="fast"] { transform: translateZ(0); }
+
+/* ---------------- Keyframes ---------------- */
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes floatX {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  100% { transform: translateX(18px) translateY(-8px) rotate(2deg); }
+}
+
+@keyframes floatY {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  100% { transform: translateX(-12px) translateY(18px) rotate(-2deg); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(0.9); opacity: 0; }
+  10% { opacity: 0.7; }
+  80% { opacity: 0.45; }
+  100% { transform: translateY(-130vh) scale(1.1); opacity: 0; }
+}
+
+
+
+
+/* ---------------- Layering tip: ensure your content sits above ---------------- */
+.bodycontent {
+  position: relative;
+  z-index: 5;
+}
+
+/* small responsiveness/tune */
+@media (max-width: 720px) {
+  .shape.s1, .shape.s3 { display:none; } /* hide big shapes on small screens for clarity */
+  .menu-btn { right: 18px; top: 18px; }
+}
+.questionmarks-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1; /* behind content */
+}
+
+.question-mark {
+  position: absolute;
+  color: rgba(200,160,255,0.7);
+  font-size: 30px;
+  opacity: 0;
+  animation: floatUp 8s linear infinite;
+  text-shadow: 0 0 15px rgba(150,100,255,0.7);
+  filter: blur(6px);
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(20px) translateX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-100vh) translateX(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120vh) translateX(40px);
+  }
+}
+@keyframes floatUp {
+  0% {
+    transform: translateY(20px) scale(0.9);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes shrink{
+    25%{
+      transform:scale(1.3);
+      opacity:1;
+    }
+    100%{
+      transform: scale(0);
+      opacity:0;
+    }
+}
+
+
+@keyframes appear{
+    0%{
+        transform:scale(0.2);
+        opacity:0.3;
+    }
+    25%{
+        opacity: 0.3;
+    }
+    50%{
+        transform:scale(1);
+    }
+    100%{
+        opacity:1;
+    }
+}
+
+@keyframes fadein{
+  0%{
+    opacity:0
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+@keyframes fadeout{
+  0%{opacity:1}
+  100%{opacity:0}
+}
