@@ -743,7 +743,7 @@ function goToHome(){
     menuBtn.style.animation="fadeout 1s ease";
     for(let item of menuItems) item.style.animation="fadeout 1s ease";
     
-    setTimeout(() => {location.href = "homepage.html";}, 850);  
+    setTimeout(() => {location.href = "index.html";}, 850);  
 }
 
 function goToStudyTips(){
